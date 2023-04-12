@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import MovieList from './MovieList.jsx'
 import SearchBar from './SearchBar.jsx'
+import AddMovieBar from './AddMovieBar.jsx'
 
-var movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'},
-];
+// var movies = [
+//   {title: 'Mean Girls'},
+//   {title: 'Hackers'},
+//   {title: 'The Grey'},
+//   {title: 'Sunshine'},
+//   {title: 'Ex Machina'},
+// ];
 
 const App = (props) => {
   // state variables here
+  const [movies, setMovies] = useState([]);
   const [movieList, setMovieList] = useState(movies);
 
   const updateMovieList = (query) => {
@@ -28,9 +30,16 @@ const App = (props) => {
     }
   };
 
+  const addMoviesToList = (movieTitle) => {
+    let newMovies = movies.concat([{title: movieTitle}]);
+    setMovies(newMovies);
+    return newMovies;
+  };
+
   return (
   <section className="movie-list-section">
     <h1>Movie List</h1>
+    <div className='add-bar'><AddMovieBar handleClick={addMoviesToList} setMovieList={setMovieList}/></div>
     <div className='search-bar'><SearchBar handleChange={updateMovieList}/></div>
     <div className="movie-list"><MovieList movies={movieList} /></div>
   </section>
