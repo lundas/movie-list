@@ -15,11 +15,17 @@ const App = (props) => {
   const [movieList, setMovieList] = useState(movies);
 
   const updateMovieList = (query) => {
-    let filteredMovies = movieList.filter((movie) => {
+    // TODOD: calling movies here. may cause issues later
+    let filteredMovies = movies.filter((movie) => {
       //TODO: handle case-sensitivity
       return movie.title.includes(query);
     });
-    setMovieList(filteredMovies);
+
+    if (filteredMovies.length === 0) {
+      setMovieList([{title: 'No Movies Found'}]);
+    } else {
+      setMovieList(filteredMovies);
+    }
   };
 
   return (
