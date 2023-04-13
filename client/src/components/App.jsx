@@ -16,11 +16,11 @@ const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [movieList, setMovieList] = useState(movies);
 
-  const updateMovieList = (query) => {
+  const updateMovieList = (query, isWatched = false) => {
     // TODOD: calling movies here. may cause issues later
     let filteredMovies = movies.filter((movie) => {
       //TODO: handle case-sensitivity
-      return movie.title.includes(query);
+      return movie.title.includes(query) && movie.watched === isWatched;
     });
 
     if (filteredMovies.length === 0) {
@@ -31,17 +31,36 @@ const App = (props) => {
   };
 
   const addMoviesToList = (movieTitle) => {
-    let newMovies = movies.concat([{title: movieTitle}]);
+    let newMovies = movies.concat([{title: movieTitle, watched: false}]);
     setMovies(newMovies);
     return newMovies;
   };
+
+  const updateWatchedProperty = (movieTitle, isWatched) => {
+    let newMovies = movies.map((movie) => {
+      return movie.title === movieTitle ? {title: movieTitle, watched: isWatched} : movie;
+    });
+    setMovies(newMovies);
+  }
 
   return (
   <section className="movie-list-section">
     <h1>Movie List</h1>
     <div className='add-bar'><AddMovieBar handleClick={addMoviesToList} setMovieList={setMovieList}/></div>
     <div className='search-bar'><SearchBar handleChange={updateMovieList}/></div>
-    <div className="movie-list"><MovieList movies={movieList} /></div>
+    <span>
+      <button type="button" id="watched-button" value="watched" onClick={(e) => {
+        let isWatched = true;
+        let query = document.querySelector('#search-text-input').value;
+        updateMovieList(query, isWatched);
+        }}>Watched</button>
+      <button type="button" id="to-watch-button" value="to-watch" onClick={(e) => {
+        let isWatched = false;
+        let query = document.querySelector('#search-text-input').value;
+        updateMovieList(query, isWatched);
+      }}>To Watch</button>
+    </span>
+    <div className="movie-list"><MovieList movies={movieList} handleChange={updateWatchedProperty}/></div>
   </section>
   )
 };

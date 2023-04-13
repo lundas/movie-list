@@ -5,7 +5,7 @@ const SearchBar = ({handleChange}) => {
 
   return (
     <form className="search" method="get" action="">
-      <input type="search" placeholder="Search" onChange={(e)=>{
+      <input type="search" id="search-text-input" placeholder="Search" onChange={(e)=>{
         handleChange(e.target.value);
       }}/>
     </form>

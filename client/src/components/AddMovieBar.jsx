@@ -9,6 +9,7 @@ const AddMovieBar = ({ handleClick, setMovieList }) => {
         let formText = document.querySelector('#add-movie-text').value;
         let newMovies = handleClick(formText);
         setMovieList(newMovies);
+        document.querySelector('#add-movie-text').value = '';
       }}/>
     </form>
   );
