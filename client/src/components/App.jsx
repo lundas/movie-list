@@ -17,17 +17,12 @@ const App = (props) => {
   const [movieList, setMovieList] = useState(movies);
 
   const updateMovieList = (query, isWatched = false) => {
-    // TODOD: calling movies here. may cause issues later
+    // TODO: calling movies here. may cause issues later
     let filteredMovies = movies.filter((movie) => {
       //TODO: handle case-sensitivity
       return movie.title.includes(query) && movie.watched === isWatched;
     });
-
-    if (filteredMovies.length === 0) {
-      setMovieList([{title: 'No Movies Found'}]);
-    } else {
-      setMovieList(filteredMovies);
-    }
+    setMovieList(filteredMovies);
   };
 
   const addMoviesToList = (movieTitle) => {
@@ -40,7 +35,11 @@ const App = (props) => {
     let newMovies = movies.map((movie) => {
       return movie.title === movieTitle ? {title: movieTitle, watched: isWatched} : movie;
     });
+    let newMovieList = movieList.map((movie) => {
+      return movie.title === movieTitle ? {title: movieTitle, watched: isWatched} : movie;
+    });
     setMovies(newMovies);
+    setMovieList(newMovieList);
   }
 
   return (
@@ -60,7 +59,7 @@ const App = (props) => {
         updateMovieList(query, isWatched);
       }}>To Watch</button>
     </span>
-    <div className="movie-list"><MovieList movies={movieList} handleChange={updateWatchedProperty}/></div>
+    <div className="movie-list"><MovieList movies={movieList} handleChange={updateWatchedProperty} /></div>
   </section>
   )
 };
