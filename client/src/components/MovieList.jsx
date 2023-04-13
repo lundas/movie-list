@@ -5,9 +5,9 @@ const MovieList = ({ movies, handleChange }) => {
   let colorMap = {true: 'green', false: 'black'};
 
   return (
-    <ul className="movie-list">
-      {movies.map((movie) => <li className="movie-list-entry" style={{color: colorMap[movie.watched]}} key={movie.title} data-title={movie.title}><MovieListEntry movie={movie} handleChange={handleChange}/></li>)}
-    </ul>
+    <div className="movie-list">
+      {movies.map((movie) => <div className="movie-list-entry" style={{color: colorMap[movie.watched]}} key={movie.title} data-title={movie.title}><MovieListEntry movie={movie} handleChange={handleChange}/></div>)}
+    </div>
   );
 };
 

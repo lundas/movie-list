@@ -47,7 +47,7 @@ const App = (props) => {
     <h1>Movie List</h1>
     <div className='add-bar'><AddMovieBar handleClick={addMoviesToList} setMovieList={setMovieList}/></div>
     <div className='search-bar'><SearchBar handleChange={updateMovieList}/></div>
-    <span>
+    <span id="watched-filter-buttons">
       <button type="button" id="watched-button" value="watched" onClick={(e) => {
         let isWatched = true;
         let query = document.querySelector('#search-text-input').value;
