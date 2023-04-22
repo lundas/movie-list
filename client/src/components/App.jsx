@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import MovieList from './MovieList.jsx'
 import SearchBar from './SearchBar.jsx'
 import AddMovieBar from './AddMovieBar.jsx'
+import getMovieData from '../lib/getMovieData.js'
+
 
 // var movies = [
 //   {title: 'Mean Girls'},
@@ -15,6 +17,11 @@ const App = (props) => {
   // state variables here
   const [movies, setMovies] = useState([]);
   const [movieList, setMovieList] = useState(movies);
+
+  getMovieData((response) => {
+    setMovies(response.data);
+    setMovieList(response.data);
+  });
 
   const updateMovieList = (query, isWatched = false) => {
     // TODO: calling movies here. may cause issues later

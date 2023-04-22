@@ -17,10 +17,6 @@ app.post('/api/movies', controller.post);
 
 app.put('/api/movies', controller.put);
 
-app.options((req, res) => {
-  if (err) {
-    res.sendStatus(400);
-  } else {
-    res.sendStatus(204);
-  }
-})
+app.use((req, res) => {
+  res.end('Hello, World!');
+});

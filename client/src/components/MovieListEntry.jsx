@@ -8,10 +8,10 @@ const MovieListEntry = ({ movie, handleChange }) => {
         document.querySelector(`.movie-info[data-title='${movie.title}']`).hidden = !isHidden;
       }}>{movie.title}</span>
       <div className="movie-info" data-title={movie.title} hidden>
-        <div>Year: </div>
-        <div>Runtime:</div>
-        <div>MetaScore:</div>
-        <div>imdbRating</div>
+        <div>Rating: {movie.rating}</div>
+        <div>Year: {movie.release_year}</div>
+        <div>Runtime: {movie.runtime} min</div>
+        <img src={movie.image} />
         <button type="button" name="watched" value={movie.watched} onClick={(e) => {
           let isWatched = !movie.watched;
           handleChange(movie.title, isWatched);
