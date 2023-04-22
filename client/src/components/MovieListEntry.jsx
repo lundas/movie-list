@@ -3,7 +3,7 @@ import React from 'react';
 const MovieListEntry = ({ movie, handleChange }) => {
   return (
     <>
-      <span onClick={(e) => {
+      <span className="movie-title" onClick={(e) => {
         let isHidden = document.querySelector(`.movie-info[data-title='${movie.title}']`).hidden;
         document.querySelector(`.movie-info[data-title='${movie.title}']`).hidden = !isHidden;
       }}>{movie.title}</span>

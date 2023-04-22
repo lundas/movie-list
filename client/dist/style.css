@@ -1,3 +1,107 @@
 body {
   font-family: sans-serif, arial;
+  background-color: #EBD8B2;
+}
+
+#app {
+  display: flex;
+  color: #654E92;
+  justify-content: center;
+}
+
+.movie-list-div {
+  width: 75%;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+h1 {
+  font-family: cursive;
+  font-size: xxx-large;
+}
+
+.text-bar, .movie-list {
+  width: 100%;
+}
+
+form {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+button, input[type=submit] {
+  background-color: rgba(101, 78, 146, 0.7);
+  border-radius: 8px;
+  border-width: 0;
+  color: #EBD8B2;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#watched-filter-buttons {
+  display: flex;
+  width: inherit;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+input[type=text], input[type=search] {
+  box-sizing: border-box;
+  width: 75%;
+  height: 40px;
+  opacity: 0.6;
+  padding: 5px;
+  margin: 5px 10px 5px 0;
+}
+
+input[type=search] {
+  margin-right: 60px;
+}
+
+.movie-list-entry {
+  display: flex;
+  width: inherit;
+  /* height: 50px; */
+  background-color: rgba(108, 155, 207, 0.5);
+  border-radius: 8px;
+  font-size: 28px;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 20px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-title {
+  margin: 10px;
+}
+
+.movie-info {
+  font-size: 14px;
+  margin: 10px;
+}
+
+img {
+  height: 200px;
+  margin: 20px;
+  float: right;
 }

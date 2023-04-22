@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieList from './MovieList.jsx'
 import SearchBar from './SearchBar.jsx'
 import AddMovieBar from './AddMovieBar.jsx'
@@ -18,10 +18,13 @@ const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [movieList, setMovieList] = useState(movies);
 
-  getMovieData((response) => {
-    setMovies(response.data);
-    setMovieList(response.data);
-  });
+  useEffect(() => {
+    getMovieData((response) => {
+      setMovies(response.data);
+      setMovieList(response.data);
+    });
+  }, []);
+
 
   const updateMovieList = (query, isWatched = false) => {
     // TODO: calling movies here. may cause issues later
@@ -50,10 +53,10 @@ const App = (props) => {
   }
 
   return (
-  <section className="movie-list-section">
+  <div className="movie-list-div">
     <h1>Movie List</h1>
-    <div className='add-bar'><AddMovieBar handleClick={addMoviesToList} setMovieList={setMovieList}/></div>
-    <div className='search-bar'><SearchBar handleChange={updateMovieList}/></div>
+    <div className='text-bar'><AddMovieBar handleClick={addMoviesToList} setMovieList={setMovieList}/></div>
+    <div className='text-bar'><SearchBar handleChange={updateMovieList}/></div>
     <span id="watched-filter-buttons">
       <button type="button" id="watched-button" value="watched" onClick={(e) => {
         let isWatched = true;
@@ -67,7 +70,7 @@ const App = (props) => {
       }}>To Watch</button>
     </span>
     <div className="movie-list"><MovieList movies={movieList} handleChange={updateWatchedProperty} /></div>
-  </section>
+  </div>
   )
 };
 
